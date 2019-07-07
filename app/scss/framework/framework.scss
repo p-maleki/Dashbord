@@ -1,0 +1,436 @@
+@import "reset";
+@import "layout";
+
+/**
+ * Code your Styleguide
+ */
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
+$bg: #F5F7FA;
+$black: #1B253A;
+$grey: #94979B;
+$lightgrey: #DBDFE9;
+$blue: #3A84FF;
+$yellow: #FFB12D;
+$pink: #FF507C;
+$red: #E11212;
+
+@mixin shadow {
+  box-shadow: 1px 0 10px rgba(0,0,0,.027);
+}
+
+body {
+  background: $bg;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: $blue;
+}
+
+.all-site {
+  display: flex;
+  #main {
+    flex-grow: 1;
+  }
+}
+
+.panel {
+  background: #fff;
+  @include shadow;
+  padding: 20px;
+  border-radius: 4px;
+  .header {
+    color: $black;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 25px;
+  }
+}
+#sidebar {
+  position: fixed;
+  background: #fff;
+  width: 280px;
+  height: 100vh;
+  z-index: 10;
+  @include shadow;
+  @include phablet {
+    left: -500px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    height: 67px;
+    border-bottom: 2px solid $bg;
+    box-sizing: border-box;
+    padding: 15px 40px;
+    .img {
+      flex-grow: 1;
+      img {
+        height: 23px;
+        width: auto;
+      }
+    }
+    .burger {
+      cursor: pointer;
+      width: 20px;
+      height: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      span {
+        width: 100%;
+        height: 2px;
+        background: $grey;
+        &:nth-child(2){
+          width: 50%;
+        }
+      }
+    }
+  }
+  nav.menu {
+    box-sizing: border-box;
+    padding: 10px 30px;
+    height: calc(100% - 62px);
+    overflow: scroll;
+    &::-webkit-scrollbar {
+      width: 5px;
+      padding-right: 10px;
+      border: 5px solid transparent;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      border: 5px solid transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: transparent;
+      border-radius: 10px;
+      border: 5px solid transparent;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+    &:hover {
+      &::-webkit-scrollbar-thumb {
+        background: $lightgrey;
+      }
+    }
+    ul {
+      li {
+        .divider {
+          width: 100%;
+          height: 1px;
+          background: $bg;
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+        a {
+          display: flex;
+          align-items: center;
+          color: #94979B;
+          font-size: 20px;
+          padding-top: 25px;
+          padding-bottom: 25px;
+          transition: .2s;
+          .icon {
+            width: 30px;
+            text-align: center;
+            margin-left: 0px;
+          }
+          span {
+            font-size: 16px;
+            margin-left: 20px;
+            margin-top: 2px;
+          }
+          &.active {
+            color: $blue;
+          }
+          &:hover {
+            color: $black;
+          }
+        }
+        ul {
+          li {
+            a {
+              position: relative;
+              font-size: 14px;
+              padding-left: 50px;
+              padding-top: 15px;
+              padding-bottom: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+#main {
+  margin-left: 280px;
+  @include phablet {
+    margin-left: 0;
+  }
+  nav.navbar {
+    z-index: 5;
+    height: 65px;
+    background: #fff;
+    @include shadow;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    .searchbox {
+      flex-grow: 1;
+      color: $grey;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      input {
+        flex-grow: 1;
+        height: 40px;
+        font-size: 18px;
+        margin-left: 10px;
+        padding-left: 10px;
+        border: 0;
+        outline: 0;
+        &::placeholder {
+          color: $grey;
+          font-weight: lighter;
+        }
+      }
+    }
+    .menu {
+      ul {
+        display: flex;
+        align-items: center;
+        padding-left: 50px;
+        li {
+          a {
+            position: relative;
+            display: block;
+            line-height: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: $grey;
+            span.count {
+              position: absolute;
+              top: 0px;
+              right: 3px;
+              color: #fff;
+              height: 11px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 3px 5px 2px 6px;
+              font-size: 9px;
+              background: $red;
+              border-radius: 30px;
+              border: 3px solid #fff;
+            }
+          }
+          &.profile {
+            @include center;
+            cursor: pointer;
+            margin-left: 20px;
+            img {
+              margin-right: 10px;
+              height: 30px;
+            }
+            span {
+              color: $black;
+              font-size: 16px;
+              margin-top: 2px;
+              margin-right: 20px;
+              @include phablet {
+                margin-right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+span.yellow-circle {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  background: $yellow;
+  border-radius: 7px;
+}
+
+.table {
+  width: 100%;
+  thead {
+    tr {
+      border-bottom: 2px solid #f0f0f0;
+      td {
+        color: $grey;
+        font-size: 14px;
+        height: 30px;
+      }
+    }
+  }
+  tbody {
+    tr {
+      border-bottom: 1px solid #f0f0f0;
+      td {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: #52575A;
+        font-size: 15px;
+        span.focus {
+          border: 1px solid $lightgrey;
+          border-radius: 3px;
+          padding: 7px;
+        }
+      }
+      &:last-child {
+        border-bottom: 0 !important;
+      }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-top: 10px;
+  a {
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-left: 0;
+    color: $grey;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .2s;
+    &.active {
+      color: $black;
+      font-weight: 600;
+    }
+    &:first-child {
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px;
+      border-left: 1px solid #ddd;
+      color: $black;
+    }
+    &:last-child {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      color: $black;
+    }
+    &:hover {
+      background: #f8f8f8;
+    }
+  }
+}
+
+.card {
+  background: #fff;
+  @include shadow;
+  padding: 20px;
+  border-radius: 4px;
+  color: $grey;
+  display: flex;
+  align-items: center;
+  font-weight: lighter;
+  &.card-blue {
+    background: $blue;
+    color: #fff;
+  }
+  &.card-red {
+    background: $red;
+    color: #fff;
+  }
+  &.card-yellow {
+    background: $yellow;
+    color: #fff;
+  }
+  &.card-pink {
+    background: $pink;
+    color: #fff;
+  }
+  .text {
+    font-size: 48px;
+  }
+  .icon {
+    flex-grow: 1;
+    font-size: 36px;
+    color: rgba(255,255,255,.5);
+  }
+}
+
+form.form {
+  .group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    label {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    input, textarea {
+      padding: 7px;
+      border-radius: 4px;
+      border: 1px solid $lightgrey;
+      background: #fff;
+      outline: 0;
+      font-size: 14px;
+      height: 20px;
+      transition: .3s;
+      &:focus {
+        border-color: $black;
+      }
+    }
+    select {
+      padding: 7px;
+      border-radius: 4px;
+      border: 1px solid $lightgrey;
+      background: #fff;
+      outline: 0;
+      font-size: 14px;
+      transition: .3s;
+      &:focus {
+        border-color: $black;
+      }
+    }
+  }
+}
+
+[class^="btn-"] {
+  padding: 15px 25px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  background: $grey;
+  color: $black;
+  border: 0;
+  @include shadow;
+  cursor: pointer;
+}
+
+.btn-blue {
+  background: $blue;
+  color: #fff;
+}
+.btn-yellow {
+  background: $yellow;
+  color: #fff;
+}
+.btn-pink {
+  background: $pink;
+  color: #fff;
+}
+.btn-red {
+  background: $red;
+  color: #fff;
+}

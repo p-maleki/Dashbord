@@ -1,0 +1,143 @@
+/**
+ * Responsive and Grid Layouts
+ */
+@mixin desktop {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media only screen and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin phablet {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: 599px) {
+    @content;
+  }
+}
+
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+.row {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(12,1fr);
+  grid-column-gap: 15px;
+  margin-bottom: 20px;
+  @include laptop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @include phablet {
+    grid-template-columns: 1fr;
+    grid-column-gap: 0;
+  }
+  [class^="col-"] {
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  .col-1 {
+    grid-column: span 1;
+  }
+  .col-2 {
+    grid-column: span 2;
+  }
+  .col-3 {
+    grid-column: span 3;
+  }
+  .col-4 {
+    grid-column: span 4;
+  }
+  .col-5 {
+    grid-column: span 5;
+  }
+  .col-6 {
+    grid-column: span 6;
+  }
+  .col-7 {
+    grid-column: span 7;
+  }
+  .col-8 {
+    grid-column: span 8;
+  }
+  .col-9 {
+    grid-column: span 9;
+  }
+  .col-10 {
+    grid-column: span 10;
+  }
+  .col-11 {
+    grid-column: span 11;
+  }
+  .col-12 {
+    grid-column: span 12;
+  }
+}
+
+
+@mixin flexItems($alignItems,$justifyContent) {
+  display: flex;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+}
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin alignCenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin gridRepeat($number){
+  display: grid;
+  grid-template-columns: repeat($number,1fr);
+}
+
+@mixin gap($pixels){
+  grid-column-gap: $pixels;
+}

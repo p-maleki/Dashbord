@@ -1,0 +1,37 @@
+@import "framework/framework";
+
+#main {
+  width: 100%;
+  .main {
+    padding: 20px;
+  }
+  .main > .header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    h1 {
+      color: $black;
+      font-size: 18px;
+      font-weight: 600;
+      flex-grow: 1;
+    }
+    ul {
+      li {
+        float: left;
+        margin-left: 20px;
+      }
+    }
+  }
+  .main > .body {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 25px;
+  }
+}
+
+.buttons-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
