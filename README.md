@@ -1,5 +1,5 @@
-# Free Dashboard 
-Hi!
+#  Dashboard 
+
 
 Clone project
 ````
